@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style=""><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Automation Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+      /* Base Reset & Layout */
+      :root {
+        --primary: #0a1628;
+        --primary-light: #1a3a6e;
+        --accent: #4a90e2;
+        --bg-light: #f4f7fb;
+        --text-main: #1a2332;
+        --text-muted: #556070;
+        --border-color: #e2e8f0;
+      }
+
+      body {
+        font-family:
+          'Segoe UI',
+          system-ui,
+          -apple-system,
+          sans-serif;
+        color: var(--text-main);
+        background-color: #fff;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0;
+        line-height: 1.6;
+      }
+
+      /* Portfolio Header */
+      .portfolio-header {
+        background: linear-gradient(135deg, #0a1628 0%, #112244 60%, #1a3a6e 100%);
+        padding: 48px 56px;
+        color: #fff;
+        margin-bottom: 32px;
+        position: relative;
+        border-radius: 0 0 4px 4px;
+      }
+      .portfolio-header .label {
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #7eb8f7;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+      .portfolio-header h1 {
+        font-size: 32px;
+        font-weight: 700;
+        margin: 0 0 12px 0;
+        color: #fff;
+        line-height: 1.2;
+      }
+      .portfolio-header .subtitle {
+        font-size: 16px;
+        color: #b0c8e8;
+        max-width: 600px;
+        margin: 0;
+        font-weight: 400;
+      }
+      .header-divider {
+        width: 40px;
+        height: 3px;
+        background: #4a90e2;
+        margin: 16px 0;
+        border-radius: 2px;
+      }
+
+      /* Main Content Area */
+      .content {
+        padding: 0 56px 56px;
+      }
+
+      /* Intro Box */
+      .intro-box {
+        background-color: #f0f6ff;
+        border-left: 4px solid #4a90e2;
+        padding: 16px 20px;
+        margin-bottom: 40px;
+        color: #2c4a72;
+        font-size: 14px;
+        border-radius: 0 4px 4px 0;
+      }
+
+      /* Project Card */
+      .project-card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        margin-bottom: 40px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .project-header {
+        background: #0d2040;
+        background: linear-gradient(90deg, #0d2040 0%, #1a3a6e 100%);
+        padding: 18px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #1a3a6e;
+      }
+
+      .project-info .project-number {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #7eb8f7;
+        margin-bottom: 2px;
+      }
+
+      .project-info h2 {
+        font-size: 18px;
+        color: #fff;
+        margin: 0;
+        font-weight: 700;
+      }
+
+      .status-badge {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .status-complete {
+        color: #7fffa8;
+        border-color: rgba(26, 107, 58, 0.5);
+        background: rgba(26, 107, 58, 0.4);
+      }
+      .status-inprogress {
+        color: #ffc878;
+        border-color: rgba(122, 68, 0, 0.5);
+        background: rgba(122, 68, 0, 0.4);
+      }
+
+      .project-body {
+        padding: 24px;
+      }
+
+      /* Section Labels & Typography */
+      .section-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #4a90e2;
+        font-weight: 700;
+        margin: 24px 0 8px 0;
+      }
+      .section-label:first-child {
+        margin-top: 0;
+      }
+
+      p {
+        font-size: 14px;
+        color: #334155;
+        margin-bottom: 12px;
+        text-align: justify;
+      }
+
+      /* Feature Lists */
+      ul.feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      ul.feature-list li {
+        font-size: 13.5px;
+        color: #2a3545;
+        padding: 4px 0 4px 20px;
+        position: relative;
+      }
+      ul.feature-list li::before {
+        content: '▸';
+        position: absolute;
+        left: 0;
+        color: #4a90e2;
+        font-weight: bold;
+      }
+      ul.feature-list li.sub {
+        padding-left: 36px;
+        color: #556070;
+        font-size: 13px;
+      }
+      ul.feature-list li.sub::before {
+        content: '–';
+        left: 20px;
+        color: #94a3b8;
+        font-weight: normal;
+      }
+
+      /* Tech Tags */
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .tag {
+        background: #e8f0fc;
+        color: #1a3a7e;
+        border: 1px solid #c0d0f0;
+        padding: 3px 10px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      /* Impact & Planned Boxes */
+      .impact-box {
+        background: #f0faf4;
+        border: 1px solid #b2e0c0;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin-top: 8px;
+      }
+      .impact-box li {
+        color: #166534;
+        font-size: 13px;
+      }
+      .impact-box li::before {
+        content: '✔';
+        color: #16a34a;
+      }
+
+      .planned-box {
+        background: #fff8ec;
+        border: 1px solid #f0d080;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin-top: 8px;
+      }
+      .planned-box li {
+        color: #78350f;
+        font-size: 13px;
+      }
+      .planned-box li::before {
+        content: '◈';
+        color: #d97706;
+      }
+
+      /* Architecture Grid */
+      .arch-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 12px;
+        margin-top: 8px;
+      }
+      .arch-item {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 10px 12px;
+        font-size: 12.5px;
+      }
+      .arch-item strong {
+        display: block;
+        color: #4a90e2;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+      }
+
+      /* Screenshots Section */
+      .screenshots-section {
+        margin-top: 28px;
+        border-top: 1px dashed #cbd5e1;
+        padding-top: 20px;
+      }
+      .screenshots-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 12px;
+      }
+      .screenshots-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 12px;
+      }
+      .screenshots-full {
+        margin-top: 16px;
+      }
+
+      figure {
+        margin: 0;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        overflow: hidden;
+        background: #f8fafc;
+        transition: transform 0.2s;
+      }
+      figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #f1f5f9;
+      }
+      figcaption {
+        padding: 8px 10px;
+        font-size: 11px;
+        color: #64748b;
+        font-style: italic;
+        text-align: center;
+        background: #f8fafc;
+        line-height: 1.3;
+      }
+
+      /* Footer */
+      .portfolio-footer {
+        background: #0a1628;
+        color: #64748b;
+        text-align: center;
+        padding: 24px;
+        font-size: 12px;
+        border-top: 1px solid #1e293b;
+        margin-top: 20px;
+      }
+      /* Fullscreen Image Viewer */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: zoom-out;
+}
+
+.image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+    </style>
+  </head>
+  <body style="">
+    <!-- HEADER -->
+    <header class="portfolio-header">
+      <div class="label">Professional Portfolio — Project Showcase</div>
+      <h1>Network Automation Portfolio</h1>
+      <div class="header-divider"></div>
+      <p class="subtitle">
+        Senior NOC Engineer specialized in IP Core & Network Operations,
+  leveraging automation to improve efficiency, reduce MTTR, and support large-scale ISP environments.
+      </p>
+    </header>
+
+    <div class="content">
+      <div class="intro-box">
+        This portfolio showcases real-world NOC solutions developed to improve network operations, automation, and decision-making within ISP environments.
+It highlights how automation is used as a practical tool to solve operational challenges and enhance network reliability.
+      </div>
+
+      <!-- PROJECT 1: Automation Hub -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-info">
+            <div class="project-number">Project 01</div>
+            <h2>Automation Hub (Web-Based Platform)</h2>
+          </div>
+          <div class="status-badge status-complete">✓ Completed</div>
+        </div>
+        <div class="project-body">
+          <div class="section-label">Problem Solved</div>
+<p>
+Script distribution and version inconsistency across NOC engineers causing operational inefficiencies.
+</p>
+          <div class="section-label">Description</div>
+          <p>
+            Designed and implemented a solution to eliminate script distribution and versioning issues within NOC operations,
+            using a centralized web-based automation platform.
+          </p>
+          <p>
+            This project represents the evolution of earlier standalone automation tools into a unified and scalable
+            platform. Initially, automation tools were distributed as separate executable files, which led to version
+            inconsistencies and operational inefficiencies. This platform transformed the approach into a centralized
+            system accessible via a web interface.
+          </p>
+
+          <div class="section-label">Key Features</div>
+          <ul class="feature-list">
+            <li>Centralized execution of NOC automation tools via web interface</li>
+            <li>Eliminated version mismatch issues across team members</li>
+            <li>Enabled on-demand execution of scripts without local installation</li>
+            <li>Supported both daily operational tools and advanced automation workflows</li>
+            <li>Multi-user system with per-user isolated execution environments</li>
+            <li>Secure credential management with encryption</li>
+            <li>Real-time logging and output generation</li>
+            <li>Downloadable results (Excel, logs, reports)</li>
+          </ul>
+
+          <div class="section-label">Architecture</div>
+          <div class="arch-grid">
+            <div class="arch-item"><strong>Backend</strong>Python (FastAPI)</div>
+            <div class="arch-item"><strong>Frontend</strong>Blazor Server (.NET)</div>
+            <div class="arch-item"><strong>Execution Layer</strong>Python scripts via Netmiko</div>
+            <div class="arch-item"><strong>Database</strong>SQLite</div>
+            <div class="arch-item"><strong>Deployment</strong>Docker (multi-container)</div>
+          </div>
+
+          <div class="section-label">Technologies Used</div>
+          <div class="tech-tags">
+            <span class="tag">Python</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Blazor Server (.NET)</span>
+            <span class="tag">Docker &amp; Docker Compose</span>
+            <span class="tag">Netmiko</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">AI-assisted (ChatGPT)</span>
+          </div>
+
+          <div class="section-label">Business Impact</div>
+          <ul class="feature-list impact-box">
+            <li>Solved major distribution and versioning challenges for automation tools</li>
+            <li>Improved collaboration across NOC teams</li>
+            <li>Enabled scalable and maintainable automation framework</li>
+            <li>Reduced dependency on local environments and manual updates</li>
+          </ul>
+
+          <div class="section-label">NOC Value</div>
+<ul class="feature-list">
+  <li>Reduced MTTR during incidents</li>
+  <li>Improved troubleshooting consistency across shifts</li>
+  <li>Enabled faster decision-making in outage scenarios</li>
+  <li>Reduced dependency on repetitive manual CLI operations</li>
+</ul>
+
+<div class="section-label">Use Case</div>
+<p>
+  Instead of distributing multiple script versions manually, NOC engineers can now access all tools from a centralized platform,
+  execute tasks instantly, and retrieve consistent results across the team.
+</p>
+
+          <div class="screenshots-section">
+            <div class="section-label">📸 Screenshots</div>
+            <div class="screenshots-grid">
+              <figure>
+                <img src="https://iili.io/BKL4QAG.png" alt="User Authentication Interface" loading="lazy" data-height-listener-added="true">
+                <figcaption>User Authentication Interface</figcaption>
+              </figure>
+              <figure>
+                <img src="https://iili.io/BKL6BVV.png" alt="Main Dashboard — Tool Selection" loading="lazy" data-height-listener-added="true">
+                <figcaption>Main Dashboard — Tool Selection</figcaption>
+              </figure>
+              <figure>
+                <img src="https://iili.io/BKL6aiN.png" alt="Example Tool Execution Interface" loading="lazy" data-height-listener-added="true">
+                <figcaption>Example Tool Execution Interface</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: IP Core Automation Hub -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-info">
+            <div class="project-number">Project 02</div>
+            <h2>IP Core Automation Hub (Database)</h2>
+          </div>
+          <div class="status-badge status-complete">✓ Completed</div>
+        </div>
+        <div class="project-body">
+          <div class="section-label">Description</div>
+          <p>
+            Developed a centralized automation platform by integrating multiple standalone Python scripts into a unified
+            GUI-based application.
+          </p>
+          <p>
+            Originally built as separate executable tools, these scripts were later consolidated into a single interface
+            using AI-assisted development, enabling easier access, usability, and operational efficiency for NOC
+            engineers.
+          </p>
+
+          <div class="section-label">Key Features</div>
+          <ul class="feature-list">
+            <li>Automatically collects network data from multiple routers across the network</li>
+            <li>Builds dynamic datasets for different use cases:</li>
+            <li class="sub">BGP neighbors and VRF mapping</li>
+            <li class="sub">International IP lookup</li>
+            <li class="sub">Interface utilization and traffic analysis</li>
+            <li class="sub">Upload links monitoring</li>
+            <li>Integrated multiple standalone automation scripts into a single GUI application</li>
+            <li>Generates structured output in Excel format with timestamp</li>
+            <li>Supports filtering and selective input of network nodes</li>
+            <li>User-friendly interface for easy operation by NOC engineers</li>
+          </ul>
+
+          <div class="section-label">Technologies Used</div>
+          <div class="tech-tags">
+            <span class="tag">Python</span>
+            <span class="tag">GUI Development</span>
+            <span class="tag">AI-assisted (ChatGPT)</span>
+            <span class="tag">BGP / IP / VRF</span>
+            <span class="tag">Excel Reporting</span>
+          </div>
+
+          <div class="section-label">Business Impact</div>
+          <ul class="feature-list impact-box">
+            <li>Reduced manual data collection time significantly</li>
+            <li>Eliminated human errors in network data gathering</li>
+            <li>Improved operational efficiency and decision-making speed</li>
+            <li>Enabled faster troubleshooting and better visibility across the network</li>
+          </ul>
+
+          <div class="screenshots-section">
+            <div class="section-label">📸 Screenshots</div>
+            <div class="screenshots-row">
+              <figure>
+                <img src="https://iili.io/BKL6ws2.png" alt="Main GUI Interface" loading="lazy" data-height-listener-added="true">
+                <figcaption>Main GUI Interface</figcaption>
+              </figure>
+              <figure>
+                <img src="https://iili.io/BKL6D5g.png" alt="Example Tool &amp; Sample Output" loading="lazy" data-height-listener-added="true">
+                <figcaption>Example Tool &amp; Sample Output</figcaption>
+              </figure>
+            </div>
+            <div class="screenshots-full">
+              <figure>
+                <img src="https://iili.io/BKLP3gt.png" alt="Sample Data Output View" loading="lazy" data-height-listener-added="true">
+                <figcaption>Sample Data Output View</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: NOC Daily Automation Tools -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-info">
+            <div class="project-number">Project 03</div>
+            <h2>NOC Daily Automation Tools</h2>
+          </div>
+          <div class="status-badge status-complete">✓ Completed</div>
+        </div>
+        <div class="project-body">
+          <div class="section-label">Description</div>
+          <p>
+            Developed a set of daily-use automation tools designed to simplify and accelerate common NOC operational
+            tasks.
+          </p>
+          <p>
+            The solution consists of multiple Python scripts integrated into a unified GUI, categorized based on
+            functionality to support different user needs — from simple formatting utilities to advanced troubleshooting
+            tools.
+          </p>
+
+          <div class="section-label">Key Features</div>
+          <ul class="feature-list">
+            <li>Automated repetitive daily tasks performed by NOC engineers</li>
+            <li>Categorized tools based on use cases (daily ops vs. advanced analysis)</li>
+            <li>Quick-access utilities for common operations such as data formatting and lookup</li>
+            <li>Advanced troubleshooting tools that generate comprehensive diagnostics for network links:</li>
+            <li class="sub">End-to-end link analysis with automatic initial troubleshooting</li>
+            <li class="sub">Collects BGP status, interface statistics, latency tests, and error rates</li>
+            <li class="sub">Generates complete diagnostic report to support faster issue resolution</li>
+            <li class="sub">Additional utilities: data formatting, search tools, quick network checks</li>
+            <li>Results delivered in structured output (text/PDF-style reports)</li>
+          </ul>
+
+          <div class="section-label">Technologies Used</div>
+          <div class="tech-tags">
+            <span class="tag">Python</span>
+            <span class="tag">GUI Development</span>
+            <span class="tag">AI-assisted (ChatGPT)</span>
+            <span class="tag">BGP / Routing</span>
+            <span class="tag">Network Diagnostics</span>
+          </div>
+
+          <div class="section-label">Business Impact</div>
+          <ul class="feature-list impact-box">
+            <li>Significantly reduced time spent on daily operational tasks</li>
+            <li>Standardized troubleshooting steps across the team</li>
+            <li>Improved consistency and accuracy in network diagnostics</li>
+            <li>Enabled faster incident handling and reduced MTTR</li>
+          </ul>
+
+          <div class="screenshots-section">
+            <div class="section-label">📸 Screenshots</div>
+            <div class="screenshots-row">
+              <figure>
+                <img src="https://iili.io/BKLPBmG.png" alt="Main GUI Interface" loading="lazy" data-height-listener-added="true">
+                <figcaption>Main GUI Interface</figcaption>
+              </figure>
+              <figure>
+                <img src="https://iili.io/BKLPYmb.png" alt="Tool Selection Panel" loading="lazy" data-height-listener-added="true">
+                <figcaption>Tool Selection Panel</figcaption>
+              </figure>
+            </div>
+            <div class="screenshots-full">
+              <figure>
+                <img src="https://iili.io/BKLPEBV.png" alt="Example Tool &amp; Sample Output" loading="lazy" data-height-listener-added="true">
+                <figcaption>Example Tool &amp; Sample Output</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 4: Restoration Guard -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-info">
+            <div class="project-number">Project 04</div>
+            <h2>Restoration Guard — Network Capacity &amp; Change Impact Platform</h2>
+          </div>
+          <div class="status-badge status-inprogress">⟳ In Progress</div>
+        </div>
+        <div class="project-body">
+          <div class="section-label">Description</div>
+          <p>
+            Developing a web-based platform designed to support NOC decision-making in managing backup links, outage
+            handling, and capacity planning.
+          </p>
+          <p>
+            The system aims to eliminate manual tracking methods (e.g., personal notes or spreadsheets) and replace them
+            with a centralized, data-driven solution for evaluating network readiness and change impact.
+          </p>
+
+          <div class="section-label">Key Features</div>
+          <ul class="feature-list">
+            <li>Centralized outage management with impacted and restoration links tracking</li>
+            <li>Link directory system for organizing network links by customer and zone</li>
+            <li>Time-based analysis to evaluate link usage and availability</li>
+            <li>Visualization of network capacity using charts and graphs</li>
+            <li>Decision-support for capacity planning, change management, and backup link availability</li>
+            <li>Enables forecasting network state during planned changes</li>
+          </ul>
+
+          <div class="section-label">Technologies Used</div>
+          <div class="tech-tags">
+            <span class="tag">Web-based Architecture</span>
+            <span class="tag">Data Visualization</span>
+            <span class="tag">Backend + DB (In Progress)</span>
+            <span class="tag">AI-assisted (ChatGPT)</span>
+          </div>
+
+          <div class="section-label">Planned Enhancements</div>
+          <ul class="feature-list planned-box">
+            <li>Full backend integration with live network data</li>
+            <li>Advanced forecasting and simulation features</li>
+            <li>Improved data accuracy and automation</li>
+            <li>Enhanced UI/UX and reporting capabilities</li>
+          </ul>
+
+          <div class="screenshots-section">
+            <div class="section-label">📸 Screenshots</div>
+            <div class="screenshots-grid">
+              <figure>
+                <img src="https://iili.io/BKLPXYF.png" alt="Outage Manager View" loading="lazy" data-height-listener-added="true">
+                <figcaption>Outage Manager View</figcaption>
+              </figure>
+              <figure>
+                <img src="https://iili.io/BKLPS4I.png" alt="Link Directory" loading="lazy" data-height-listener-added="true">
+                <figcaption>Link Directory</figcaption>
+              </figure>
+              <figure>
+                <img src="https://iili.io/BKLPm37.png" alt="Dashboard" loading="lazy" data-height-listener-added="true">
+                <figcaption>Dashboard</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="portfolio-footer">
+      Network Automation Portfolio &nbsp;·&nbsp; Senior NOC Engineer &nbsp;·&nbsp; Project Showcase — Attachment to CV
+    </footer>
+  
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<div class="image-modal" id="imageModal">
+  <img id="modalImg" src="">
+</div>
+</body>
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+
+  document.querySelectorAll("figure img").forEach(img => {
+    img.style.cursor = "zoom-in";
+
+    img.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+    });
+  });
+
+  modal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+</script>
+</html>
